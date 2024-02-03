@@ -22,7 +22,6 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final DriveSubsystem driveSubSystem = DriveSubsystem.getInstance();
   private final ShooterSubsystem shooter = ShooterSubsystem.getInstance();
 
@@ -34,8 +33,6 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings();
     driveSubSystem.setDefaultCommand(new DefaultDriveCommand());
-    // shooter.setDefaultCommand(new ShootCommand(200, 50, 1));
-    // shooter.setDefaultCommand(new IntakeCommand(50, 1));
   }
 
   /**
@@ -48,7 +45,7 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    Inputs.getShoot().onTrue(new ShootCommand(50, 200, 1));
+    Inputs.getShoot().onTrue(new ShootCommand(5, 200, 1));
     Inputs.getIntake().onTrue(new IntakeCommand(200, .5));
     
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`

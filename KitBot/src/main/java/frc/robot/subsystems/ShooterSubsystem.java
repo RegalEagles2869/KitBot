@@ -16,8 +16,9 @@ public class ShooterSubsystem extends SubsystemBase {
     }
 
     public ShooterSubsystem() {
-        shooter1 = new WPI_TalonSRX(2);
         shooter1 = new WPI_TalonSRX(1);
+        shooter2 = new WPI_TalonSRX(2);
+        stop();
     }
     
     public void shoot1(double speed) {

@@ -11,12 +11,12 @@ public class Inputs {
     
     
 	public static double getSpeed() {
-        double speed = driver1.getLeftY();
+        double speed = driver1.getRightX();
         return speed;
     }
 
     public static double getTurn() {
-        double turn = driver1.getRightX();
+        double turn = driver1.getLeftY();
         return turn;
     }
 
