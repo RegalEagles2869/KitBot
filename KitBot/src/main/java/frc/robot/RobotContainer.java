@@ -48,8 +48,8 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    Inputs.getShoot().onTrue(new ShootCommand(200, 50, 1));
-    Inputs.getIntake().onTrue(new IntakeCommand(50, .5));
+    Inputs.getShoot().onTrue(new ShootCommand(50, 200, 1));
+    Inputs.getIntake().onTrue(new IntakeCommand(200, .5));
     
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 
