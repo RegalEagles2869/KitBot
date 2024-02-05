@@ -7,8 +7,15 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class ClimberSubsystem extends SubsystemBase {
     private WPI_TalonSRX motor;
 
+    private static ClimberSubsystem instance;
+
     private double position;
     private boolean goToPosition;
+
+    public static ClimberSubsystem getInstance() {
+        if (instance == null) instance = new ClimberSubsystem();
+        return instance;
+    }
     
     public ClimberSubsystem() {
         motor = new WPI_TalonSRX(0);

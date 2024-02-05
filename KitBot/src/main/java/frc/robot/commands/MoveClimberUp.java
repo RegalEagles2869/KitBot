@@ -7,6 +7,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 
 public class MoveClimberUp extends Command {
+  ClimberSubsystem climber = ClimberSubsystem.getInstance();
   /** Creates a new MoveClimberUp. */
   public MoveClimberUp() {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -18,7 +19,9 @@ public class MoveClimberUp extends Command {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    
+  }
 
   // Called once the command ends or is interrupted.
   @Override
