@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class MoveClimberUp extends Command {
   ClimberSubsystem climber = ClimberSubsystem.getInstance();
   /** Creates a new MoveClimberUp. */
-  public MoveClimberUp() {
+  public MoveClimberUp(double speed) {
+    addRequirements(climber);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -20,7 +21,7 @@ public class MoveClimberUp extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
+    climber.set(speed);
   }
 
   // Called once the command ends or is interrupted.
@@ -30,6 +31,7 @@ public class MoveClimberUp extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if (!Inputs.getClimberUp()) return true;
     return false;
   }
 }
