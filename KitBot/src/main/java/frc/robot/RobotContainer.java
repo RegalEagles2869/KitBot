@@ -47,6 +47,7 @@ public class RobotContainer {
   private void configureBindings() {
     Inputs.getShoot().onTrue(new ShootCommand(5, 200, 1));
     Inputs.getIntake().onTrue(new IntakeCommand(200, .5));
+    Inputs.getElevatorDown().onTrue(new SetClimberSpeed(.3));
     
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 

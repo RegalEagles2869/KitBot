@@ -26,7 +26,7 @@ public class Inputs {
     public static Trigger getIntake() {
         return driver1Com.y();
     }
-    public static Trigger getClimberUp() {
-        return null;
+    public static Trigger getClimberDown() {
+        return driver1Com.x();
     }
 }
