@@ -5,12 +5,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.ClimberSubsystem;
 
-public class MoveClimberUp extends Command {
+public class SetClimberSpeed extends Command {
   ClimberSubsystem climber = ClimberSubsystem.getInstance();
+  double speed;
   /** Creates a new MoveClimberUp. */
-  public MoveClimberUp(double speed) {
+  public SetClimberSpeed(double speed) {
     addRequirements(climber);
+    this.speed = speed;
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -21,17 +24,24 @@ public class MoveClimberUp extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    climber.set(speed);
+    climber.setSpeed(speed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    climber.setSpeed(0);
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (!Inputs.getClimberUp()) return true;
     return false;
+    
   }
+  /* If CDVDD breaks due to there being no safety, it is ALL Jackson's fault.
+   * - Hunter
+   * - Navreet 
+   * - Matthew Tusa :)
+   */
 }

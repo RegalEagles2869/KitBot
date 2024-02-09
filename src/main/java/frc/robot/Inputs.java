@@ -27,6 +27,9 @@ public class Inputs {
         return driver1Com.y();
     }
     public static Trigger getClimberDown() {
-        return driver1Com.x();
+        return driver1Com.leftBumper();
+    }
+    public static Trigger getClimberUp() {
+        return driver1Com.rightBumper();
     }
 }
