@@ -46,10 +46,10 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    Inputs.getShoot().onTrue(new ShootCommand(5, 200, 1));
+    Inputs.getShoot().whileTrue(new ShootCommand(5, 200, 1));
     Inputs.getIntake().onTrue(new IntakeCommand(200, .5));
     Inputs.getClimberDown().whileTrue(new SetClimberSpeed(1));
-    Inputs.getClimberUp().whileTrue(new SetClimberSpeed(-.3));
+    Inputs.getClimberUp().whileTrue(new SetClimberSpeed(-1));
     
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 

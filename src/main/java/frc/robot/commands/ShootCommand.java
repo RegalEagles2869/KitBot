@@ -39,15 +39,11 @@ public class ShootCommand extends Command {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    shooter.stop();
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (tick == mTick) {
-      shooter.stop();
-      return true;
-    }
-    return false;
-  }
 }
