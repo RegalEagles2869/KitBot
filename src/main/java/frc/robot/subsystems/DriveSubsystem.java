@@ -16,8 +16,12 @@ public class DriveSubsystem extends SubsystemBase{
     private DifferentialDrive drive;
 
     private static DriveSubsystem ds;
-    //54
+    //talon.setNeutralMode(NeutralMode.)
     public DriveSubsystem() {
+        // leftMotor1.setNeutralMode(NeutralMode.Coast);
+        // leftMotor2.setNeutralMode(NeutralMode.Coast);
+        // rightMotor1.setNeutralMode(NeutralMode.Coast);
+        // rightMotor2.setNeutralMode(NeutralMode.Coast);
         leftMotor1 = new WPI_TalonSRX(3);
         leftMotor2 = new WPI_TalonSRX(4);
         rightMotor1 = new WPI_TalonSRX(6);

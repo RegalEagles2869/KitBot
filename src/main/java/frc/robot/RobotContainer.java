@@ -10,7 +10,6 @@ import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.SetClimberSpeed;
 import frc.robot.commands.ShootCommand;
 import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -46,8 +45,8 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    Inputs.getShoot().whileTrue(new ShootCommand(5, 200, 1));
-    Inputs.getIntake().onTrue(new IntakeCommand(200, .5));
+    Inputs.getShoot().whileTrue(new ShootCommand(5, 1));
+    Inputs.getIntake().onTrue(new IntakeCommand(.5));
     Inputs.getClimberDown().whileTrue(new SetClimberSpeed(1));
     Inputs.getClimberUp().whileTrue(new SetClimberSpeed(-1));
     

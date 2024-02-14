@@ -8,19 +8,17 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ShooterSubsystem;
 
 public class ShootCommand extends Command {
-  private int mTick;
   private int sTick;
   private int tick;
   private double s;
   private ShooterSubsystem shooter = ShooterSubsystem.getInstance();
   /** Creates a new IntakeCommand. */
-  public ShootCommand(int secondTick, int maxTick, double speed) {
+  public ShootCommand(int secondTick, double speed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(shooter);
     s = speed;
     tick = 0;
     sTick = secondTick;
-    mTick = maxTick;
   }
 
   // Called when the command is initially scheduled.
@@ -46,4 +44,6 @@ public class ShootCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    return false;
+  }
 }

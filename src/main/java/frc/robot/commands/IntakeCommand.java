@@ -13,12 +13,11 @@ public class IntakeCommand extends Command {
   private double s;
   private ShooterSubsystem shooter = ShooterSubsystem.getInstance();
   /** Creates a new IntakeCommand. */
-  public IntakeCommand(int maxTick, double speed) {
+  public IntakeCommand(double speed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(shooter);
     s = speed;
     tick = 0;
-    mTick = maxTick;
   }
 
   // Called when the command is initially scheduled.
@@ -37,16 +36,13 @@ public class IntakeCommand extends Command {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    shooter.stop();
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    System.out.println(tick);
-    if (tick == mTick) {
-      shooter.stop();
-      return true;
-    }
     return false;
   }
 }
