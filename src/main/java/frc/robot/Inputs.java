@@ -33,11 +33,19 @@ public class Inputs {
         return driver1Com.rightBumper();
     }
 
-    public static Trigger revShoot() {
+    // public static Trigger revShoot() {
+    //     return driver1Com.a();
+    // }
+
+    // public static Trigger revBack() {
+    //     return driver1Com.x();
+    // }
+
+    public static Trigger getAmpIntake() {
         return driver1Com.a();
     }
 
-    public static Trigger revBack() {
+    public static Trigger getAmpOutake() {
         return driver1Com.x();
     }
 }

@@ -9,6 +9,7 @@ import frc.robot.commands.DefaultDriveCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.RevBackMotor;
 import frc.robot.commands.RevFrontMotor;
+import frc.robot.commands.SetAmpSpeed;
 import frc.robot.commands.SetClimberSpeed;
 import frc.robot.commands.ShootCommand;
 import frc.robot.subsystems.DriveSubsystem;
@@ -51,8 +52,11 @@ public class RobotContainer {
     Inputs.getIntake().whileTrue(new IntakeCommand(.75));
     Inputs.getClimberDown().whileTrue(new SetClimberSpeed(1));
     Inputs.getClimberUp().whileTrue(new SetClimberSpeed(-1));
-    Inputs.revShoot().whileTrue(new RevFrontMotor(1));
-    Inputs.revBack().whileTrue(new RevBackMotor(.5));
+    // Inputs.revShoot().whileTrue(new RevFrontMotor(1));
+    // Inputs.revBack().whileTrue(new RevBackMotor(.5));
+    Inputs.getAmpOutake().whileTrue(new SetAmpSpeed(1));
+    Inputs.getAmpIntake().whileTrue(new SetAmpSpeed(-.5));
+
     
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 
