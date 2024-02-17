@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -21,5 +22,9 @@ public class ClimberSubsystem extends SubsystemBase {
     
     public void setSpeed(double speed) {
         motor.set(speed);
+    }
+
+    public void brake() {
+        motor.setNeutralMode(NeutralMode.Brake);
     }
 }

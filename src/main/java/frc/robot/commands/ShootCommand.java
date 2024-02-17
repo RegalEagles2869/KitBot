@@ -10,15 +10,17 @@ import frc.robot.subsystems.ShooterSubsystem;
 public class ShootCommand extends Command {
   private int sTick;
   private int tick;
+  private int mTick;
   private double s;
   private ShooterSubsystem shooter = ShooterSubsystem.getInstance();
   /** Creates a new IntakeCommand. */
-  public ShootCommand(int secondTick, double speed) {
+  public ShootCommand(int secondTick, double speed, int maxTick) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(shooter);
     s = speed;
     tick = 0;
     sTick = secondTick;
+    mTick = maxTick;
   }
 
   // Called when the command is initially scheduled.
@@ -31,8 +33,8 @@ public class ShootCommand extends Command {
   @Override
   public void execute() {
     shooter.shoot1(s);
-    tick++;
     if (tick >= sTick) shooter.shoot2(s);
+    tick++;
   }
 
   // Called once the command ends or is interrupted.
@@ -44,6 +46,9 @@ public class ShootCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if (tick == mTick) {
+      return true;
+    }
     return false;
   }
 }

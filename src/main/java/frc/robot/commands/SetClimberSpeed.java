@@ -4,6 +4,8 @@
 
 package frc.robot.commands;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ClimberSubsystem;
 
@@ -31,6 +33,7 @@ public class SetClimberSpeed extends Command {
   @Override
   public void end(boolean interrupted) {
     climber.setSpeed(0);
+    climber.brake();
   }
 
   // Returns true when the command should end.

@@ -32,4 +32,12 @@ public class Inputs {
     public static Trigger getClimberUp() {
         return driver1Com.rightBumper();
     }
+
+    public static Trigger revShoot() {
+        return driver1Com.a();
+    }
+
+    public static Trigger revBack() {
+        return driver1Com.x();
+    }
 }
