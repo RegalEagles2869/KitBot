@@ -5,29 +5,20 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants;
-import frc.robot.Inputs;
-import frc.robot.subsystems.DriveSubsystem;
 
-public class DefaultDriveCommand extends Command {
-  /** Creates a new DefaultDriveCommand. */
-  DriveSubsystem drive = DriveSubsystem.getInstance();
-  double speedMult = 1;
-  public DefaultDriveCommand() {
-    addRequirements(drive);
+public class ClimberSlipPrevent extends Command {
+  /** Creates a new ClimberSlipPrevent. */
+  public ClimberSlipPrevent() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {}
+
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    if (Inputs.getSlowMode().getAsBoolean()) speedMult = .5;
-    else speedMult = 1;
-    drive.drive(Inputs.getSpeed() * speedMult, Inputs.getTurn() * Constants.DriveConstants.rotateMultiplier);
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override

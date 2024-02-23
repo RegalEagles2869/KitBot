@@ -48,13 +48,15 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    Inputs.getShoot().onTrue(new ShootCommand(30, 1, 75));
+    Inputs.getShoot().onTrue(new ShootCommand(100, 1, 200));
     Inputs.getIntake().whileTrue(new IntakeCommand(.75));
     Inputs.getClimberDown().whileTrue(new SetClimberSpeed(1));
     Inputs.getClimberUp().whileTrue(new SetClimberSpeed(-1));
     // Inputs.revShoot().whileTrue(new RevFrontMotor(1));
     // Inputs.revBack().whileTrue(new RevBackMotor(.5));
     Inputs.getAmpOutake().whileTrue(new SetAmpSpeed(1));
+    Inputs.getAmpIntake().whileTrue(new SetAmpSpeed(-.5));
+    
     Inputs.getAmpIntake().whileTrue(new SetAmpSpeed(-.5));
 
     

@@ -11,12 +11,12 @@ public class Inputs {
     
     
 	public static double getSpeed() {
-        double speed = driver1.getRightX();
+        double speed = driver1.getLeftY();
         return speed;
     }
 
     public static double getTurn() {
-        double turn = driver1.getLeftY();
+        double turn = driver1.getRightX();
         return turn;
     }
 
@@ -47,5 +47,9 @@ public class Inputs {
 
     public static Trigger getAmpOutake() {
         return driver1Com.x();
+    }
+
+    public static Trigger getSlowMode() {
+        return driver1Com.leftTrigger();
     }
 }

@@ -5,28 +5,32 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants;
-import frc.robot.Inputs;
 import frc.robot.subsystems.DriveSubsystem;
 
-public class DefaultDriveCommand extends Command {
-  /** Creates a new DefaultDriveCommand. */
-  DriveSubsystem drive = DriveSubsystem.getInstance();
-  double speedMult = 1;
-  public DefaultDriveCommand() {
+public class AutoCommand extends Command {
+  private int tick;
+  private int maxTick;
+  private double speed;
+  private DriveSubsystem drive = DriveSubsystem.getInstance();
+  /** Creates a new AutoCommand. */
+  public AutoCommand(int maxTick, double speed) {
     addRequirements(drive);
+    this.maxTick = maxTick;
+    this.speed = speed;
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    tick = 0;
+  }
+
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (Inputs.getSlowMode().getAsBoolean()) speedMult = .5;
-    else speedMult = 1;
-    drive.drive(Inputs.getSpeed() * speedMult, Inputs.getTurn() * Constants.DriveConstants.rotateMultiplier);
+    tick++;
+    drive.drive(speed, 0);
   }
 
   // Called once the command ends or is interrupted.
@@ -36,6 +40,7 @@ public class DefaultDriveCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if (tick == maxTick) return true;
     return false;
   }
 }

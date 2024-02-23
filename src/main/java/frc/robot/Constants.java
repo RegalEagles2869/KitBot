@@ -23,5 +23,7 @@ public final class Constants {
     public static final int left2ID = 0;
     public static final int right1ID = 0;
     public static final int right2ID = 0;
+
+    public static final double rotateMultiplier = .9;
   }
 }

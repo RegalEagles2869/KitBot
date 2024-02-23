@@ -4,14 +4,14 @@
 
 package frc.robot.commands;
 
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ClimberSubsystem;
 
 public class SetClimberSpeed extends Command {
   ClimberSubsystem climber = ClimberSubsystem.getInstance();
   double speed;
+  DigitalInput limit = ClimberSubsystem.getLimitSwitch();
   /** Creates a new MoveClimberUp. */
   public SetClimberSpeed(double speed) {
     addRequirements(climber);
@@ -26,7 +26,12 @@ public class SetClimberSpeed extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    climber.setSpeed(speed);
+    System.out.println(limit.get() + " : " + speed);
+    if(speed > 0 && !limit.get()) {
+      climber.setSpeed(0);
+    } else {
+      climber.setSpeed(speed);
+    }
   }
 
   // Called once the command ends or is interrupted.
