@@ -26,7 +26,6 @@ public class SetClimberSpeed extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println(limit.get() + " : " + speed);
     if(speed > 0 && !limit.get()) {
       climber.setSpeed(0);
     } else {

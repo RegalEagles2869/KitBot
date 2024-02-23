@@ -4,11 +4,19 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Inputs;
+import frc.robot.subsystems.ClimberSubsystem;
 
 public class ClimberSlipPrevent extends Command {
+  ClimberSubsystem climber = ClimberSubsystem.getInstance();
+  DigitalInput limit = ClimberSubsystem.getLimitSwitch();
+  double speed;
   /** Creates a new ClimberSlipPrevent. */
-  public ClimberSlipPrevent() {
+  public ClimberSlipPrevent(double speed) {
+    addRequirements(climber);
+    this.speed = speed;
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -18,15 +26,27 @@ public class ClimberSlipPrevent extends Command {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    if(limit.get()) {
+      climber.setSpeed(speed);
+    } else {
+      climber.setSpeed(0);
+    }
+  }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    climber.setSpeed(0);
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if(Inputs.getClimberDown().getAsBoolean()) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

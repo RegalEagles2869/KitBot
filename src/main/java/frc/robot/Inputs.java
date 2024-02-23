@@ -52,4 +52,8 @@ public class Inputs {
     public static Trigger getSlowMode() {
         return driver1Com.leftTrigger();
     }
+
+    public static Trigger getSlipPrevent() {
+        return driver1Com.rightTrigger();
+    }
 }
