@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 
+import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -12,6 +13,7 @@ public class DriveSubsystem extends SubsystemBase{
     private WPI_TalonSRX leftMotor2;
     private WPI_TalonSRX rightMotor1;
     private WPI_TalonSRX rightMotor2;
+    private SupplyCurrentLimitConfiguration limit;
 
     private DifferentialDrive drive;
 
@@ -22,13 +24,21 @@ public class DriveSubsystem extends SubsystemBase{
         // leftMotor2.setNeutralMode(NeutralMode.Coast);
         // rightMotor1.setNeutralMode(NeutralMode.Coast);
         // rightMotor2.setNeutralMode(NeutralMode.Coast);
-        leftMotor1 = new WPI_TalonSRX(3);
-        leftMotor2 = new WPI_TalonSRX(4);
-        rightMotor1 = new WPI_TalonSRX(6);
+
+        limit  = new SupplyCurrentLimitConfiguration(true, 40, 40, 0);
+        leftMotor1 = new WPI_TalonSRX(6);
+        leftMotor2 = new WPI_TalonSRX(3);
+        rightMotor1 = new WPI_TalonSRX(1);
         rightMotor2 = new WPI_TalonSRX(5);
+        leftMotor1.configSupplyCurrentLimit(limit);
+        leftMotor2.configSupplyCurrentLimit(limit);
+        rightMotor1.configSupplyCurrentLimit(limit);
+        rightMotor2.configSupplyCurrentLimit(limit);
         leftMotor1.follow(leftMotor2);
         rightMotor1.follow(rightMotor2);
-        drive = new DifferentialDrive(leftMotor1, rightMotor1);
+        leftMotor1.setInverted(false);
+        leftMotor2.setInverted(true);
+        drive = new DifferentialDrive(leftMotor2, rightMotor2);
     }
 
     public static DriveSubsystem getInstance() {
