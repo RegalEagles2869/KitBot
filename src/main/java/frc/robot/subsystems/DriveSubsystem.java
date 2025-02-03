@@ -26,9 +26,9 @@ public class DriveSubsystem extends SubsystemBase{
         // rightMotor2.setNeutralMode(NeutralMode.Coast);
 
         limit  = new SupplyCurrentLimitConfiguration(true, 40, 40, 0);
-        leftMotor1 = new WPI_TalonSRX(3);
-        leftMotor2 = new WPI_TalonSRX(4);
-        rightMotor1 = new WPI_TalonSRX(6);
+        leftMotor1 = new WPI_TalonSRX(6);
+        leftMotor2 = new WPI_TalonSRX(3);
+        rightMotor1 = new WPI_TalonSRX(1);
         rightMotor2 = new WPI_TalonSRX(5);
         leftMotor1.configSupplyCurrentLimit(limit);
         leftMotor2.configSupplyCurrentLimit(limit);
@@ -36,7 +36,7 @@ public class DriveSubsystem extends SubsystemBase{
         rightMotor2.configSupplyCurrentLimit(limit);
         leftMotor1.follow(leftMotor2);
         rightMotor1.follow(rightMotor2);
-        leftMotor1.setInverted(true);
+        leftMotor1.setInverted(false);
         leftMotor2.setInverted(true);
         drive = new DifferentialDrive(leftMotor2, rightMotor2);
     }
